@@ -902,3 +902,356 @@ body.is-hovering .cursor-ring { width: 64px; height: 64px; opacity: .5; border-c
   .reveal { opacity: 1; transform: none; }
   .art { opacity: 1; transform: none; }
 }
+
+/* ============================================================
+   HERO secondary portrait
+============================================================ */
+.hero-portrait {
+  position: absolute;
+  bottom: -3rem;
+  left: -3.5rem;
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  transform: rotate(-6deg);
+  z-index: 3;
+  animation: heroIn 1.6s var(--ease) 2s backwards;
+}
+.hero-portrait .portrait-tag {
+  font-size: 1.05rem;
+  color: var(--rose);
+  letter-spacing: -0.01em;
+}
+.hex-frame--small {
+  width: 130px;
+  aspect-ratio: 1 / 1;
+  filter: drop-shadow(0 12px 24px rgba(26,22,18,0.25));
+  position: relative;
+}
+.hex-frame--small img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+@media (max-width: 880px) {
+  .hero-portrait {
+    bottom: auto;
+    top: 1rem;
+    left: auto;
+    right: -1rem;
+    width: 95px;
+    transform: rotate(8deg);
+  }
+  .hex-frame--small { width: 88px; }
+  .hero-portrait .portrait-tag {
+    font-size: 0.85rem;
+    text-align: center;
+    margin-top: 0.3rem;
+  }
+}
+
+/* ============================================================
+   PAINT BLEND overlay (used on portraits)
+============================================================ */
+.paint-blend {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  opacity: 0;
+  transition: opacity .8s var(--ease);
+  background-size: cover;
+  background-position: center;
+}
+.paint-blend--rose {
+  background-image: url('images/hex-pour-rainbow.jpg');
+  opacity: 0.18;
+}
+.paint-blend--teal {
+  background-image: url('images/ocean-pour.jpg');
+  opacity: 0.22;
+}
+.paint-blend--gold {
+  background-image: url('images/hex-pour-cosmic.jpg');
+  opacity: 0.12;
+}
+.hex-portrait:hover .paint-blend,
+.hex-frame--small:hover .paint-blend {
+  opacity: 0.4;
+}
+
+/* ============================================================
+   PAINTER section
+============================================================ */
+.painter {
+  padding: 7rem clamp(1rem, 4vw, 3rem) 6rem;
+  max-width: var(--max);
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.painter-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(2.5rem, 7vw, 6rem);
+  align-items: center;
+}
+
+.portrait-stack {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1.05;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hex-portrait {
+  position: relative;
+  clip-path: var(--hex);
+  overflow: hidden;
+  background: var(--ink);
+  filter: drop-shadow(0 30px 60px rgba(26,22,18,0.28));
+  transition: transform .9s var(--ease);
+}
+.hex-portrait img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 1.4s var(--ease), filter .8s var(--ease);
+}
+.hex-portrait:hover img { transform: scale(1.08); }
+
+.hex-portrait--main {
+  width: 78%;
+  aspect-ratio: 1 / 1;
+  z-index: 2;
+  transform: rotate(-2deg);
+}
+.hex-portrait--peek {
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 38%;
+  aspect-ratio: 1 / 1;
+  z-index: 3;
+  transform: rotate(6deg) translate(10%, 10%);
+}
+.hex-portrait--peek img { object-position: center 25%; }
+
+.splatter {
+  position: absolute;
+  width: 180px; height: 180px;
+  pointer-events: none;
+  z-index: 1;
+}
+.splatter-a { top: -8%; left: -10%; animation: floatA 8s ease-in-out infinite; }
+.splatter-b { top: 30%; right: -8%; width: 140px; height: 140px; animation: floatB 11s ease-in-out infinite; }
+.splatter-c { bottom: -5%; left: 30%; width: 100px; height: 100px; animation: floatA 9s ease-in-out infinite reverse; }
+
+.portrait-caption {
+  position: absolute;
+  bottom: -3rem;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  font-size: 1.45rem;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  z-index: 4;
+}
+
+.painter-text {
+  position: relative;
+}
+.painter-text .display {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-variation-settings: "opsz" 144, "SOFT" 60;
+  font-weight: 350;
+  margin-bottom: 1.8rem;
+  line-height: 1;
+}
+.painter-text .display em {
+  color: var(--rose);
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+.painter-text .lede { margin-bottom: 1.1rem; }
+.painter-sig {
+  font-size: 2.2rem;
+  color: var(--rose);
+  margin: 1.5rem 0 0;
+  display: inline-block;
+  transform: rotate(-3deg);
+}
+
+@media (max-width: 880px) {
+  .painter-grid { grid-template-columns: 1fr; gap: 5rem; }
+  .portrait-stack { aspect-ratio: 1 / 1; max-width: 380px; margin: 0 auto; }
+  .hex-portrait--main { width: 75%; }
+  .hex-portrait--peek { width: 42%; transform: rotate(6deg) translate(15%, 15%); }
+  .portrait-caption { bottom: -2.5rem; font-size: 1.2rem; }
+}
+
+/* ============================================================
+   MOMENTS / polaroid collage
+============================================================ */
+.moments {
+  padding: 8rem clamp(1rem, 4vw, 3rem) 6rem;
+  max-width: var(--max);
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.moments-head { text-align: center; margin-bottom: 5rem; }
+.moments-head .display {
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  margin-bottom: 1rem;
+}
+.moments-head .display em {
+  color: var(--teal);
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+.moments-head .lede { margin: 0 auto; }
+
+.polaroid-stack {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem;
+  align-items: start;
+  padding: 2rem 0;
+  position: relative;
+}
+
+.polaroid {
+  position: relative;
+  background: #fff;
+  padding: 1rem 1rem 3.5rem;
+  margin: 0;
+  box-shadow:
+    0 1px 2px rgba(26,22,18,0.08),
+    0 12px 30px rgba(26,22,18,0.18);
+  transition: transform .5s var(--ease), box-shadow .5s var(--ease);
+  cursor: grab;
+}
+.polaroid:hover {
+  transform: rotate(0deg) translateY(-8px) scale(1.04) !important;
+  box-shadow:
+    0 1px 2px rgba(26,22,18,0.1),
+    0 25px 50px rgba(26,22,18,0.25);
+  z-index: 5;
+}
+.pol-1 { transform: rotate(-4deg) translateY(10px); }
+.pol-2 { transform: rotate(3deg); }
+.pol-3 { transform: rotate(-2deg) translateY(20px); }
+.pol-4 { transform: rotate(5deg) translateY(-10px); }
+
+.pol-photo {
+  overflow: hidden;
+  background: var(--paper-2);
+  aspect-ratio: 4/5;
+}
+.pol-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: contrast(1.02) saturate(1.05);
+}
+
+.polaroid figcaption {
+  text-align: center;
+  font-size: 1.25rem;
+  color: var(--ink);
+  margin-top: 0.8rem;
+  letter-spacing: -0.005em;
+}
+
+/* "paint tape" at corners — small painted strokes */
+.pol-tape {
+  position: absolute;
+  width: 70px; height: 24px;
+  z-index: 2;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(184,58,92,0.85) 0px,
+      rgba(184,58,92,0.85) 2px,
+      rgba(184,58,92,0.65) 2px,
+      rgba(184,58,92,0.65) 5px,
+      rgba(184,58,92,0.85) 5px,
+      rgba(184,58,92,0.85) 8px,
+      rgba(184,58,92,0.45) 8px,
+      rgba(184,58,92,0.45) 11px
+    );
+  filter: blur(0.4px);
+  clip-path: polygon(8% 0%, 92% 0%, 100% 30%, 95% 70%, 92% 100%, 8% 100%, 5% 70%, 0% 30%);
+}
+.pol-tape--tl { top: -10px; left: 12px; transform: rotate(-12deg); }
+.pol-tape--tr { top: -10px; right: 12px; transform: rotate(15deg); }
+
+.pol-2 .pol-tape, .pol-4 .pol-tape {
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(14,93,98,0.85) 0px,
+      rgba(14,93,98,0.85) 2px,
+      rgba(14,93,98,0.6) 2px,
+      rgba(14,93,98,0.6) 5px,
+      rgba(14,93,98,0.85) 5px,
+      rgba(14,93,98,0.85) 8px,
+      rgba(14,93,98,0.4) 8px,
+      rgba(14,93,98,0.4) 11px
+    );
+}
+.pol-3 .pol-tape {
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(201,157,63,0.85) 0px,
+      rgba(201,157,63,0.85) 2px,
+      rgba(201,157,63,0.6) 2px,
+      rgba(201,157,63,0.6) 5px,
+      rgba(201,157,63,0.85) 5px,
+      rgba(201,157,63,0.85) 8px,
+      rgba(201,157,63,0.4) 8px,
+      rgba(201,157,63,0.4) 11px
+    );
+}
+
+/* scattered paint dots in moments section */
+.moments-dot { position: absolute; pointer-events: none; }
+.moments-dot--a { top: 18%; left: 5%; width: 50px; height: 50px; animation: floatA 7s ease-in-out infinite; }
+.moments-dot--b { top: 55%; right: 6%; width: 40px; height: 40px; animation: floatB 9s ease-in-out infinite; }
+.moments-dot--c { bottom: 12%; left: 12%; width: 32px; height: 32px; animation: floatA 6s ease-in-out infinite reverse; }
+
+@media (max-width: 980px) {
+  .polaroid-stack { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+  .pol-1, .pol-3 { transform: rotate(-3deg); }
+  .pol-2, .pol-4 { transform: rotate(3deg); }
+}
+@media (max-width: 520px) {
+  .polaroid-stack { grid-template-columns: 1fr; max-width: 280px; margin: 0 auto; }
+}
+
+/* ============================================================
+   contact additions
+============================================================ */
+.hello-byline {
+  margin-top: 3rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: center;
+}
+.hello-byline .hand {
+  font-size: 1.6rem;
+  color: var(--ink);
+}
+.hello-email {
+  font-family: var(--body);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--ink-mute);
+  letter-spacing: 0.01em;
+}

@@ -3,13 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ink & whiskers — a quiet little gallery</title>
-  <meta name="description" content="A personal gallery of paintings by ink_n_whiskers — acrylic pours, stained-glass florals, and small souls captured in soft strokes." />
-
-  <!-- favicon: small hex -->
+  <title>ink & whiskers — paintings by thabu jacob</title>
+  <meta name="description" content="A personal gallery of paintings by Thabu Jacob (@ink_n_whiskers) — acrylic pours, stained-glass florals, and small souls captured in soft strokes." />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50,4 92,28 92,72 50,96 8,72 8,28' fill='%231A1612'/%3E%3C/svg%3E" />
 
-  <!-- Fonts: Fraunces (variable display serif) + Newsreader (editorial body) + Caveat (hand) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap" rel="stylesheet" />
@@ -18,7 +15,7 @@
 </head>
 <body>
 
-  <!-- ====== INK DROP ENTRY ====== -->
+  <!-- INK DROP ENTRY -->
   <div class="ink-curtain" id="inkCurtain">
     <svg class="ink-drop" viewBox="0 0 600 600" aria-hidden="true">
       <defs>
@@ -29,21 +26,18 @@
         </radialGradient>
       </defs>
       <circle cx="300" cy="300" r="280" fill="url(#dropGrad)" />
-      <!-- splatter dots -->
-      <circle cx="80"  cy="200" r="14" fill="#1a1612" />
+      <circle cx="80" cy="200" r="14" fill="#1a1612" />
       <circle cx="540" cy="240" r="10" fill="#1a1612" />
       <circle cx="120" cy="460" r="18" fill="#1a1612" />
-      <circle cx="510" cy="470" r="8"  fill="#1a1612" />
-      <circle cx="50"  cy="340" r="6"  fill="#1a1612" />
-      <circle cx="560" cy="370" r="5"  fill="#1a1612" />
+      <circle cx="510" cy="470" r="8" fill="#1a1612" />
     </svg>
   </div>
 
-  <!-- ====== CUSTOM CURSOR ====== -->
+  <!-- CURSOR -->
   <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
   <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
 
-  <!-- ====== SCROLL PROGRESS (ink fills the hex) ====== -->
+  <!-- SCROLL PROGRESS HEX -->
   <div class="scroll-progress" aria-hidden="true">
     <svg viewBox="0 0 40 44">
       <polygon class="hex-outline" points="20,2 38,12 38,32 20,42 2,32 2,12" />
@@ -51,7 +45,7 @@
     </svg>
   </div>
 
-  <!-- ====== NAV ====== -->
+  <!-- NAV -->
   <nav class="nav">
     <a href="#top" class="nav-mark" aria-label="ink and whiskers">
       <svg viewBox="0 0 40 44" aria-hidden="true">
@@ -62,13 +56,13 @@
     </a>
     <ul class="nav-links">
       <li><a href="#gallery">gallery</a></li>
-      <li><a href="#about">about</a></li>
-      <li><a href="#notes">studio notes</a></li>
+      <li><a href="#painter">about</a></li>
+      <li><a href="#moments">moments</a></li>
       <li><a href="#hello">say hi</a></li>
     </ul>
   </nav>
 
-  <!-- ====== HERO ====== -->
+  <!-- HERO -->
   <header class="hero" id="top">
     <div class="hero-marquee" aria-hidden="true">
       <div class="marquee-track">
@@ -97,7 +91,7 @@
           colours don't get lost in the scroll.
         </p>
         <p class="hero-byline">
-          <span class="hand">by hart</span>
+          <span class="hand">by thabu jacob</span>
           <span class="bullet">·</span>
           <a href="https://www.instagram.com/ink_n_whiskers/" target="_blank" rel="noopener" class="ig-inline">@ink_n_whiskers</a>
         </p>
@@ -114,11 +108,21 @@
         <div class="hex-frame">
           <img src="images/stained-glass-birds.jpg" alt="A glass-paint piece of a blue peacock and a phoenix surrounded by pink roses, sunflowers and emerald leaves." />
         </div>
+
+        <!-- floating secondary portrait -->
+        <div class="hero-portrait">
+          <div class="hex-frame hex-frame--small">
+            <img src="images/thabu-golden.jpg" alt="Thabu Jacob in golden afternoon light, looking up into the sun." />
+            <div class="paint-blend paint-blend--gold" aria-hidden="true"></div>
+          </div>
+          <span class="hand portrait-tag">— the painter</span>
+        </div>
+
         <figcaption>
           <span class="hand">the flowers are pretty —</span>
           <span class="hand">but the birds stole the spotlight</span>
         </figcaption>
-        <!-- floating accent shapes -->
+
         <span class="float-hex hex-a" aria-hidden="true"></span>
         <span class="float-hex hex-b" aria-hidden="true"></span>
         <span class="float-blob" aria-hidden="true"></span>
@@ -126,7 +130,7 @@
     </div>
   </header>
 
-  <!-- ====== MANIFESTO ====== -->
+  <!-- MANIFESTO -->
   <section class="manifesto reveal">
     <p class="kicker">— a note from the painter</p>
     <h2 class="display manifesto-text">
@@ -137,7 +141,7 @@
     </h2>
   </section>
 
-  <!-- ====== GALLERY ====== -->
+  <!-- GALLERY -->
   <section class="gallery" id="gallery">
     <div class="section-head">
       <p class="kicker">— the gallery</p>
@@ -157,7 +161,6 @@
     </div>
 
     <div class="art-grid" id="artGrid">
-      <!-- 1: Stained glass birds — large feature -->
       <figure class="art art--tall art--feature" data-cat="glass floral" data-id="1">
         <div class="art-wrap">
           <img src="images/stained-glass-birds.jpg" alt="Stained-glass painting of peacock and phoenix among roses and sunflowers" loading="lazy"/>
@@ -169,10 +172,9 @@
         </figcaption>
       </figure>
 
-      <!-- 2: Cat in daisies -->
       <figure class="art" data-cat="cat" data-id="2">
         <div class="art-wrap">
-          <img src="images/cat-daisies.jpg" alt="Painting of a ginger and white cat in a field of daisies looking up at the sky" loading="lazy"/>
+          <img src="images/cat-daisies.jpg" alt="Painting of a ginger and white cat in a field of daisies" loading="lazy"/>
         </div>
         <figcaption>
           <span class="art-num">02</span>
@@ -181,10 +183,9 @@
         </figcaption>
       </figure>
 
-      <!-- 3: Hex pour cosmic — hexagon clipped -->
       <figure class="art art--hex" data-cat="pour" data-id="3">
         <div class="art-wrap art-wrap--hex">
-          <img src="images/hex-pour-cosmic.jpg" alt="Hexagonal acrylic pour painting with deep blues, swirling reds and gold cells" loading="lazy"/>
+          <img src="images/hex-pour-cosmic.jpg" alt="Hexagonal acrylic pour with deep blues, swirling reds and gold cells" loading="lazy"/>
         </div>
         <figcaption>
           <span class="art-num">03</span>
@@ -193,7 +194,6 @@
         </figcaption>
       </figure>
 
-      <!-- 4: Waratah -->
       <figure class="art art--tall" data-cat="floral" data-id="4">
         <div class="art-wrap">
           <img src="images/waratah.jpg" alt="Bold acrylic painting of a red waratah and banksia flowers on a deep magenta background" loading="lazy"/>
@@ -205,10 +205,9 @@
         </figcaption>
       </figure>
 
-      <!-- 5: Ocean pour -->
       <figure class="art art--wide" data-cat="pour" data-id="5">
         <div class="art-wrap">
-          <img src="images/ocean-pour.jpg" alt="Acrylic pour painting with stormy blues, whites and silvers like an ocean" loading="lazy"/>
+          <img src="images/ocean-pour.jpg" alt="Acrylic pour painting in stormy blues, whites and silvers" loading="lazy"/>
         </div>
         <figcaption>
           <span class="art-num">05</span>
@@ -217,10 +216,9 @@
         </figcaption>
       </figure>
 
-      <!-- 6: Hex pour teal -->
       <figure class="art art--hex" data-cat="pour" data-id="6">
         <div class="art-wrap art-wrap--hex">
-          <img src="images/hex-pour-teal.jpg" alt="Hexagonal acrylic pour in teal, turquoise and red cells beside a small succulent" loading="lazy"/>
+          <img src="images/hex-pour-teal.jpg" alt="Hexagonal acrylic pour in teal, turquoise and red cells" loading="lazy"/>
         </div>
         <figcaption>
           <span class="art-num">06</span>
@@ -229,10 +227,9 @@
         </figcaption>
       </figure>
 
-      <!-- 7: Hex pour rainbow -->
       <figure class="art art--hex" data-cat="pour" data-id="7">
         <div class="art-wrap art-wrap--hex">
-          <img src="images/hex-pour-rainbow.jpg" alt="Hexagonal acrylic pour with red, orange, yellow and teal cells in a bloom pattern" loading="lazy"/>
+          <img src="images/hex-pour-rainbow.jpg" alt="Hexagonal acrylic pour with red, orange, yellow and teal cells" loading="lazy"/>
         </div>
         <figcaption>
           <span class="art-num">07</span>
@@ -243,10 +240,71 @@
     </div>
   </section>
 
-  <!-- ====== PROCESS / PORTRAIT ====== -->
-  <section class="process reveal" id="about">
+  <!-- PAINTER (about) -->
+  <section class="painter reveal" id="painter">
+    <div class="painter-grid">
+      <div class="painter-visual">
+        <!-- main hex portrait with paint blend -->
+        <div class="portrait-stack">
+          <div class="hex-portrait hex-portrait--main">
+            <img src="images/thabu-portrait.jpg" alt="Thabu Jacob smiling, with framed artwork on a shelf behind her." />
+            <div class="paint-blend paint-blend--rose" aria-hidden="true"></div>
+          </div>
+
+          <!-- secondary smaller portrait, offset -->
+          <div class="hex-portrait hex-portrait--peek">
+            <img src="images/thabu-flower.jpg" alt="Thabu with a green flower tucked behind her ear." />
+            <div class="paint-blend paint-blend--teal" aria-hidden="true"></div>
+          </div>
+
+          <!-- paint splatter SVG accents -->
+          <svg class="splatter splatter-a" viewBox="0 0 200 200" aria-hidden="true">
+            <circle cx="40" cy="60" r="22" fill="#B83A5C" opacity="0.8"/>
+            <circle cx="80" cy="40" r="6" fill="#B83A5C" opacity="0.6"/>
+            <circle cx="120" cy="80" r="10" fill="#B83A5C" opacity="0.5"/>
+            <circle cx="20" cy="120" r="4" fill="#B83A5C" opacity="0.7"/>
+            <ellipse cx="60" cy="100" rx="14" ry="8" fill="#B83A5C" opacity="0.4" transform="rotate(-20 60 100)"/>
+          </svg>
+          <svg class="splatter splatter-b" viewBox="0 0 200 200" aria-hidden="true">
+            <circle cx="100" cy="100" r="28" fill="#0E5D62" opacity="0.7"/>
+            <circle cx="160" cy="60" r="8" fill="#0E5D62" opacity="0.5"/>
+            <circle cx="40" cy="140" r="12" fill="#0E5D62" opacity="0.6"/>
+            <circle cx="170" cy="140" r="5" fill="#0E5D62" opacity="0.5"/>
+          </svg>
+          <svg class="splatter splatter-c" viewBox="0 0 200 200" aria-hidden="true">
+            <circle cx="100" cy="100" r="20" fill="#C99D3F" opacity="0.65"/>
+            <circle cx="40" cy="50" r="6" fill="#C99D3F" opacity="0.5"/>
+            <circle cx="160" cy="160" r="10" fill="#C99D3F" opacity="0.55"/>
+          </svg>
+
+          <span class="hand portrait-caption">thabu — in her element</span>
+        </div>
+      </div>
+
+      <div class="painter-text">
+        <p class="kicker">— the painter behind the paint</p>
+        <h2 class="display">
+          meet <em>thabu</em><br/>
+          jacob.
+        </h2>
+        <p class="lede">
+          a self-taught artist based in australia, painting whatever feeling
+          can't quite be said out loud. most pieces start as a colour stuck
+          in her head — a teal she saw on the train, a red she felt on a tuesday.
+        </p>
+        <p class="lede">
+          she loves <em>hexagons</em>, native florals, small cats, the way light
+          softens at five, and the kind of quiet that only a wet brush makes.
+        </p>
+        <p class="painter-sig hand">— thabu</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process reveal">
     <figure class="process-img">
-      <img src="images/painters-hand.jpg" alt="A hand covered in blue, green and red paint, held up to a window with grass outside" />
+      <img src="images/painters-hand.jpg" alt="A hand covered in blue, green and red paint, held up to a window with grass outside." />
       <span class="process-tag hand">and then she started painting again.</span>
     </figure>
     <div class="process-text">
@@ -256,17 +314,57 @@
         and a window full of grass.
       </h2>
       <p class="lede">
-        most pieces start as a colour stuck in my head — a teal i saw on
-        the train, a red i felt on a tuesday. by the time the canvas is
-        done my hands are usually <em>louder</em> than the painting.
+        most pieces start as a colour stuck in her head. by the time the
+        canvas is done her hands are usually <em>louder</em> than the
+        painting.
       </p>
       <p class="lede">
-        i'm self-taught, based in australia, and very fond of hexagons.
+        the studio is small. the light is honest. the cat is nearby.
       </p>
     </div>
   </section>
 
-  <!-- ====== STUDIO NOTES ====== -->
+  <!-- MOMENTS / Collage -->
+  <section class="moments reveal" id="moments">
+    <div class="moments-head">
+      <p class="kicker">— moments</p>
+      <h2 class="display">between the <em>brushstrokes</em></h2>
+      <p class="lede">small slices of the life behind the paintings.</p>
+    </div>
+
+    <div class="polaroid-stack">
+      <figure class="polaroid pol-1">
+        <div class="pol-tape pol-tape--tl"></div>
+        <div class="pol-photo"><img src="images/thabu-ferns.jpg" alt="Thabu smiling beneath giant ferns." /></div>
+        <figcaption class="hand">tasmanian ferns, deep green saturday</figcaption>
+      </figure>
+
+      <figure class="polaroid pol-2">
+        <div class="pol-tape pol-tape--tr"></div>
+        <div class="pol-photo"><img src="images/thabu-saree.jpg" alt="Thabu in a cream saree against a brick wall." /></div>
+        <figcaption class="hand">home, in gold thread</figcaption>
+      </figure>
+
+      <figure class="polaroid pol-3">
+        <div class="pol-tape pol-tape--tl"></div>
+        <div class="pol-photo"><img src="images/thabu-forest.jpg" alt="Thabu in a sunlit forest path with ferns behind her." /></div>
+        <figcaption class="hand">forests do something to you</figcaption>
+      </figure>
+
+      <figure class="polaroid pol-4">
+        <div class="pol-tape pol-tape--tr"></div>
+        <div class="pol-photo"><img src="images/thabu-flower.jpg" alt="Thabu smiling with a green flower in her hair." /></div>
+        <figcaption class="hand">flower-in-the-hair kind of sunday</figcaption>
+      </figure>
+    </div>
+
+    <!-- scattered paint dots -->
+    <svg class="moments-dot moments-dot--a" viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="22" fill="#B83A5C" opacity="0.65"/></svg>
+    <svg class="moments-dot moments-dot--b" viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="18" fill="#0E5D62" opacity="0.6"/></svg>
+    <svg class="moments-dot moments-dot--c" viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="14" fill="#C99D3F" opacity="0.7"/></svg>
+  </section>
+
+  <!-- NOTES -->
   <section class="notes reveal" id="notes">
     <p class="kicker">— studio notes</p>
     <h2 class="display">things i love to paint</h2>
@@ -299,13 +397,13 @@
     </div>
   </section>
 
-  <!-- ====== CONTACT ====== -->
+  <!-- CONTACT -->
   <section class="hello reveal" id="hello">
     <p class="kicker">— say hi</p>
     <h2 class="display">if a piece <em>spoke</em> to you,<br/>i'd love to know.</h2>
     <p class="lede">
-      no shop, no commissions — just a small inbox kept open
-      for kind words, questions, and quiet conversations about colour.
+      no shop, no commissions — just a small inbox kept open for kind words,
+      questions, and quiet conversations about colour.
     </p>
 
     <div class="contact-actions">
@@ -317,7 +415,7 @@
         </svg>
         find me on instagram
       </a>
-      <a class="btn btn--ghost" href="mailto:hello@example.com">
+      <a class="btn btn--ghost" href="mailto:thabujacobchakola@gmail.com">
         <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6">
           <rect x="3" y="5" width="18" height="14" rx="2"/>
           <path d="M3 7l9 7 9-7"/>
@@ -325,9 +423,14 @@
         send a letter
       </a>
     </div>
+
+    <p class="hello-byline">
+      <span class="hand">— thabu jacob</span>
+      <span class="hello-email">thabujacobchakola@gmail.com</span>
+    </p>
   </section>
 
-  <!-- ====== FOOTER ====== -->
+  <!-- FOOTER -->
   <footer class="foot">
     <div class="foot-grid">
       <div class="foot-mark">
@@ -336,12 +439,12 @@
         </svg>
         <span class="hand">ink &amp; whiskers</span>
       </div>
-      <p class="foot-line">made with paint, patience, and a little hex-shaped joy. <span class="hand">© 2026 hart.</span></p>
+      <p class="foot-line">made with paint, patience, and a little hex-shaped joy. <span class="hand">© 2026 thabu jacob.</span></p>
       <p class="foot-credit">a small static site — built to be hosted anywhere quiet.</p>
     </div>
   </footer>
 
-  <!-- ====== LIGHTBOX ====== -->
+  <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <button class="lb-close" id="lbClose" aria-label="close">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 5l14 14M19 5L5 19"/></svg>
@@ -357,23 +460,18 @@
     </div>
   </div>
 
-  <!-- tiny easter egg cat: appears after scrolling -->
+  <!-- peek cat easter egg -->
   <div class="peek-cat" id="peekCat" aria-hidden="true">
     <svg viewBox="0 0 80 80">
-      <!-- ears -->
       <polygon points="14,46 22,28 30,46" fill="#1A1612"/>
       <polygon points="50,46 58,28 66,46" fill="#1A1612"/>
-      <!-- head -->
       <ellipse cx="40" cy="56" rx="28" ry="20" fill="#1A1612"/>
-      <!-- eyes -->
       <circle cx="30" cy="54" r="2.4" fill="#F5EFE4"/>
       <circle cx="50" cy="54" r="2.4" fill="#F5EFE4"/>
-      <!-- whiskers -->
-      <line x1="8"  y1="60" x2="22" y2="60" stroke="#1A1612" stroke-width="1.2"/>
+      <line x1="8" y1="60" x2="22" y2="60" stroke="#1A1612" stroke-width="1.2"/>
       <line x1="58" y1="60" x2="72" y2="60" stroke="#1A1612" stroke-width="1.2"/>
       <line x1="10" y1="64" x2="22" y2="63" stroke="#1A1612" stroke-width="1.2"/>
       <line x1="58" y1="63" x2="70" y2="64" stroke="#1A1612" stroke-width="1.2"/>
-      <!-- nose -->
       <polygon points="38,60 42,60 40,63" fill="#B83A5C"/>
     </svg>
   </div>
