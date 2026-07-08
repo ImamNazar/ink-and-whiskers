@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>the play studio — ink &amp; whiskers</title>
+  <meta name="description" content="The play studio at ink & whiskers — pour your own virtual hexagon, find the colour of your day, pull a painting prompt, and find out which painting you are." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50,4 92,28 92,72 50,96 8,72 8,28' fill='%231A1612'/%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="play">
+
+  <div class="ink-wipe ink-wipe--in" id="inkWipe" aria-hidden="true"></div>
+
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <div class="scroll-progress" aria-hidden="true">
+    <svg viewBox="0 0 40 44">
+      <polygon class="hex-outline" points="20,2 38,12 38,32 20,42 2,32 2,12" />
+      <polygon class="hex-fill" id="hexFill" points="20,2 38,12 38,32 20,42 2,32 2,12" />
+    </svg>
+  </div>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-mark" aria-label="ink and whiskers — home">
+      <svg viewBox="0 0 40 44" aria-hidden="true">
+        <polygon points="20,2 38,12 38,32 20,42 2,32 2,12" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="20" y="27" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="16" fill="currentColor">i</text>
+      </svg>
+      <span>ink &amp; whiskers</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">home</a></li>
+      <li><a href="gallery.html">gallery</a></li>
+      <li><a href="artist.html">the artist</a></li>
+      <li><a href="play.html" class="is-active nav-play" aria-current="page">play studio <span class="nav-dot" aria-hidden="true"></span></a></li>
+      <li><a href="#hello">say hi</a></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <header class="page-hero page-hero--play">
+    <p class="kicker">— the play studio</p>
+    <h1 class="display page-title">get your hands<br/><em>messy.</em></h1>
+    <p class="lede page-lede">
+      no rules, no talent required, nothing to buy. four small ways to
+      fall a little bit in love with paint — the same way thabu did.
+    </p>
+    <nav class="play-index hand" aria-label="Jump to an activity">
+      <a href="#pour">01 pour a hexagon</a>
+      <a href="#colour">02 colour of your day</a>
+      <a href="#jar">03 the prompt jar</a>
+      <a href="#quiz">04 which painting are you?</a>
+    </nav>
+  </header>
+
+  <!-- 01 · POUR A HEXAGON -->
+  <section class="play-block reveal" id="pour">
+    <div class="play-head">
+      <p class="kicker">— activity 01</p>
+      <h2 class="display">pour your own <em>hexagon</em></h2>
+      <p class="lede">
+        this is (almost) how a real acrylic pour feels: you drop colour,
+        the colour decides the rest. <strong>tap or drag on the canvas</strong> to drop paint,
+        pick a palette, then swirl it with the comb. no two pours ever match.
+      </p>
+    </div>
+
+    <div class="pour-studio">
+      <div class="pour-canvas-wrap">
+        <canvas id="pourCanvas" width="900" height="900" aria-label="Interactive paint pouring canvas — tap or drag to drop paint"></canvas>
+        <p class="pour-hint hand" id="pourHint">tap anywhere to drop your first colour ↓</p>
+      </div>
+
+      <div class="pour-controls">
+        <div class="pour-group">
+          <span class="pour-label">her palettes</span>
+          <div class="pour-palettes" id="pourPalettes" role="group" aria-label="Choose a paint palette"></div>
+        </div>
+
+        <div class="pour-group">
+          <span class="pour-label">tools</span>
+          <div class="pour-tools">
+            <button class="btn btn--ghost btn--sm is-active" id="toolDrop" aria-pressed="true">💧 drop paint</button>
+            <button class="btn btn--ghost btn--sm" id="toolComb" aria-pressed="false">🖌 comb &amp; swirl</button>
+          </div>
+        </div>
+
+        <div class="pour-group pour-actions">
+          <button class="btn btn--ghost btn--sm" id="pourRinse">rinse the canvas</button>
+          <button class="btn btn--primary btn--sm" id="pourSave">keep this one ↓</button>
+        </div>
+
+        <p class="pour-note hand">— pours you "keep" download as an image. stick it on your fridge.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 · COLOUR OF YOUR DAY -->
+  <section class="play-block reveal" id="colour">
+    <div class="play-head">
+      <p class="kicker">— activity 02</p>
+      <h2 class="display">the colour of <em>your day</em></h2>
+      <p class="lede">
+        thabu says every day has a colour. pick the word that's closest to
+        how today feels, and get a little palette to prove it. tap any
+        swatch to copy it — painters welcome.
+      </p>
+    </div>
+
+    <div class="mood-studio">
+      <div class="mood-words" id="moodWords" role="group" aria-label="Pick how today feels"></div>
+      <div class="mood-result" id="moodResult" aria-live="polite">
+        <p class="hand mood-empty">pick a feeling and i'll mix it for you →</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 · PROMPT JAR -->
+  <section class="play-block reveal" id="jar">
+    <div class="play-head">
+      <p class="kicker">— activity 03</p>
+      <h2 class="display">the <em>prompt jar</em></h2>
+      <p class="lede">
+        blank pages are scary; little slips of paper are not. pull one,
+        and paint (or doodle, or photograph) whatever it says.
+        there are no wrong answers in this jar.
+      </p>
+    </div>
+
+    <div class="jar-studio">
+      <button class="jar" id="jarBtn" aria-label="Pull a prompt from the jar">
+        <svg viewBox="0 0 200 240" aria-hidden="true">
+          <path d="M60 30 h80 v18 q22 14 22 44 v104 q0 24 -24 24 H62 q-24 0 -24 -24 V92 q0 -30 22 -44 z"
+                fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+          <rect x="58" y="16" width="84" height="16" rx="6" fill="none" stroke="currentColor" stroke-width="4"/>
+          <g class="jar-slips">
+            <rect x="58" y="120" width="40" height="14" rx="2" fill="#B83A5C" transform="rotate(-12 78 127)"/>
+            <rect x="96" y="140" width="44" height="14" rx="2" fill="#0E5D62" transform="rotate(9 118 147)"/>
+            <rect x="66" y="160" width="42" height="14" rx="2" fill="#C99D3F" transform="rotate(-6 87 167)"/>
+            <rect x="100" y="176" width="38" height="14" rx="2" fill="#2C5F2D" transform="rotate(14 119 183)"/>
+          </g>
+        </svg>
+        <span class="hand jar-cue">give the jar a shake</span>
+      </button>
+
+      <div class="slip-stage" id="slipStage" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- 04 · WHICH PAINTING ARE YOU -->
+  <section class="play-block reveal" id="quiz">
+    <div class="play-head">
+      <p class="kicker">— activity 04</p>
+      <h2 class="display">which <em>painting</em> are you?</h2>
+      <p class="lede">
+        five small questions, zero science, one painting that is
+        secretly about you. answer with your gut.
+      </p>
+    </div>
+
+    <div class="quiz-studio" id="quizStudio"></div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="hello reveal" id="hello">
+    <p class="kicker">— say hi</p>
+    <h2 class="display">made something in here<br/>you're <em>proud</em> of?</h2>
+    <p class="lede">
+      send it over — a pour, a palette, a prompt you actually painted.
+      thabu genuinely loves seeing people start.
+    </p>
+    <div class="contact-actions">
+      <a class="btn btn--primary" href="https://www.instagram.com/ink_n_whiskers/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6">
+          <rect x="3" y="3" width="18" height="18" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+        share it on instagram
+      </a>
+      <a class="btn btn--ghost" href="mailto:thabujacobchakola@gmail.com">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6">
+          <rect x="3" y="5" width="18" height="14" rx="2"/>
+          <path d="M3 7l9 7 9-7"/>
+        </svg>
+        send a letter
+      </a>
+    </div>
+    <p class="hello-byline">
+      <span class="hand">— thabu jacob</span>
+      <span class="hello-email">thabujacobchakola@gmail.com</span>
+    </p>
+  </section>
+
+  <footer class="foot">
+    <div class="foot-grid">
+      <div class="foot-mark">
+        <svg viewBox="0 0 40 44" aria-hidden="true">
+          <polygon points="20,2 38,12 38,32 20,42 2,32 2,12" fill="none" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <span class="hand">ink &amp; whiskers</span>
+      </div>
+      <ul class="foot-links">
+        <li><a href="gallery.html">gallery</a></li>
+        <li><a href="artist.html">the artist</a></li>
+        <li><a href="play.html">play studio</a></li>
+      </ul>
+      <p class="foot-line">made with paint, patience, and a little hex-shaped joy. <span class="hand">© 2026 thabu jacob.</span></p>
+      <p class="foot-credit">a small static site — built to be hosted anywhere quiet.</p>
+    </div>
+  </footer>
+
+  <div class="peek-cat" id="peekCat" aria-hidden="true">
+    <svg viewBox="0 0 80 80">
+      <polygon points="14,46 22,28 30,46" fill="#1A1612"/>
+      <polygon points="50,46 58,28 66,46" fill="#1A1612"/>
+      <ellipse cx="40" cy="56" rx="28" ry="20" fill="#1A1612"/>
+      <circle cx="30" cy="54" r="2.4" fill="#F5EFE4"/>
+      <circle cx="50" cy="54" r="2.4" fill="#F5EFE4"/>
+      <line x1="8" y1="60" x2="22" y2="60" stroke="#1A1612" stroke-width="1.2"/>
+      <line x1="58" y1="60" x2="72" y2="60" stroke="#1A1612" stroke-width="1.2"/>
+      <line x1="10" y1="64" x2="22" y2="63" stroke="#1A1612" stroke-width="1.2"/>
+      <line x1="58" y1="63" x2="70" y2="64" stroke="#1A1612" stroke-width="1.2"/>
+      <polygon points="38,60 42,60 40,63" fill="#B83A5C"/>
+    </svg>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="play.js"></script>
+</body>
+</html>

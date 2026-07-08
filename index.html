@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ink &amp; whiskers — paintings by thabu jacob</title>
+  <meta name="description" content="A personal gallery of paintings by Thabu Jacob (@ink_n_whiskers) — acrylic pours, stained-glass florals, and small souls captured in soft strokes." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50,4 92,28 92,72 50,96 8,72 8,28' fill='%231A1612'/%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="home">
+
+  <!-- INK DROP ENTRY -->
+  <div class="ink-curtain" id="inkCurtain">
+    <svg class="ink-drop" viewBox="0 0 600 600" aria-hidden="true">
+      <defs>
+        <radialGradient id="dropGrad" cx="50%" cy="45%" r="50%">
+          <stop offset="0%" stop-color="#2a2018" />
+          <stop offset="60%" stop-color="#1a1612" />
+          <stop offset="100%" stop-color="#0e0a07" />
+        </radialGradient>
+      </defs>
+      <circle cx="300" cy="300" r="280" fill="url(#dropGrad)" />
+      <circle cx="80" cy="200" r="14" fill="#1a1612" />
+      <circle cx="540" cy="240" r="10" fill="#1a1612" />
+      <circle cx="120" cy="460" r="18" fill="#1a1612" />
+      <circle cx="510" cy="470" r="8" fill="#1a1612" />
+    </svg>
+  </div>
+
+  <!-- INK PAGE-TRANSITION WIPE -->
+  <div class="ink-wipe is-done" id="inkWipe" aria-hidden="true"></div>
+
+  <!-- CURSOR -->
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <!-- SCROLL PROGRESS HEX -->
+  <div class="scroll-progress" aria-hidden="true">
+    <svg viewBox="0 0 40 44">
+      <polygon class="hex-outline" points="20,2 38,12 38,32 20,42 2,32 2,12" />
+      <polygon class="hex-fill" id="hexFill" points="20,2 38,12 38,32 20,42 2,32 2,12" />
+    </svg>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="index.html" class="nav-mark" aria-label="ink and whiskers — home">
+      <svg viewBox="0 0 40 44" aria-hidden="true">
+        <polygon points="20,2 38,12 38,32 20,42 2,32 2,12" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="20" y="27" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="16" fill="currentColor">i</text>
+      </svg>
+      <span>ink &amp; whiskers</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="is-active" aria-current="page">home</a></li>
+      <li><a href="gallery.html">gallery</a></li>
+      <li><a href="artist.html">the artist</a></li>
+      <li><a href="play.html" class="nav-play">play studio <span class="nav-dot" aria-hidden="true"></span></a></li>
+      <li><a href="#hello">say hi</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="top">
+    <div class="hero-marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>acrylic pours</span><span>•</span>
+        <span>stained-glass florals</span><span>•</span>
+        <span>quiet portraits</span><span>•</span>
+        <span>hexagons</span><span>•</span>
+        <span>colour as feeling</span><span>•</span>
+        <span>acrylic pours</span><span>•</span>
+        <span>stained-glass florals</span><span>•</span>
+        <span>quiet portraits</span><span>•</span>
+        <span>hexagons</span><span>•</span>
+        <span>colour as feeling</span><span>•</span>
+      </div>
+    </div>
+
+    <div class="hero-grid">
+      <div class="hero-text">
+        <span class="eyebrow"><span class="dot"></span> a small personal gallery</span>
+        <h1 class="display">
+          <span class="line line-1">ink<span class="amp">&amp;</span></span>
+          <span class="line line-2">whiskers</span>
+        </h1>
+        <p class="hero-blurb">
+          paintings, pours, and the occasional cat — kept here so the
+          colours don't get lost in the scroll.
+        </p>
+        <p class="hero-byline">
+          <span class="hand">by thabu jacob</span>
+          <span class="bullet">·</span>
+          <a href="https://www.instagram.com/ink_n_whiskers/" target="_blank" rel="noopener" class="ig-inline">@ink_n_whiskers</a>
+        </p>
+
+        <div class="hero-ctas">
+          <a href="gallery.html" class="btn btn--primary">wander the gallery</a>
+          <a href="play.html" class="btn btn--ghost">or come play with paint</a>
+        </div>
+      </div>
+
+      <figure class="hero-art">
+        <div class="hex-frame">
+          <img src="images/stained-glass-birds.jpg" alt="A glass-paint piece of a blue peacock and a phoenix surrounded by pink roses, sunflowers and emerald leaves." />
+        </div>
+
+        <!-- floating secondary portrait -->
+        <div class="hero-portrait">
+          <div class="hex-frame hex-frame--small">
+            <img src="images/thabu-golden.jpg" alt="Thabu Jacob in golden afternoon light, looking up into the sun." />
+            <div class="paint-blend paint-blend--gold" aria-hidden="true"></div>
+          </div>
+          <span class="hand portrait-tag">— the painter</span>
+        </div>
+
+        <figcaption>
+          <span class="hand">the flowers are pretty —</span>
+          <span class="hand">but the birds stole the spotlight</span>
+        </figcaption>
+
+        <span class="float-hex hex-a" aria-hidden="true"></span>
+        <span class="float-hex hex-b" aria-hidden="true"></span>
+        <span class="float-blob" aria-hidden="true"></span>
+      </figure>
+    </div>
+  </header>
+
+  <!-- FRESH OFF THE EASEL -->
+  <section class="easel reveal" aria-label="Newest paintings">
+    <div class="easel-head">
+      <p class="kicker">— fresh off the easel</p>
+      <h2 class="display">the newest colours</h2>
+      <p class="lede easel-hint"><span class="hand">drag sideways, or just let them drift →</span></p>
+    </div>
+
+    <div class="easel-track" id="easelTrack" tabindex="0" aria-label="Scrollable strip of new paintings">
+      <a class="easel-card" href="gallery.html#p8">
+        <span class="new-drop" aria-hidden="true">new</span>
+        <img src="images/kitten-daisies.jpg" alt="Painting of a ginger and white kitten looking up at a blue sky, surrounded by daisies." loading="lazy"/>
+        <span class="easel-cap"><span class="hand">sun on his face, daisies everywhere</span></span>
+      </a>
+      <a class="easel-card easel-card--sq" href="gallery.html#p10">
+        <span class="new-drop" aria-hidden="true">new</span>
+        <img src="images/storm-pour.jpg" alt="A large square acrylic pour canvas in stormy blues, silvers and whites, leaning against a wall." loading="lazy"/>
+        <span class="easel-cap"><span class="hand">a storm she poured on purpose</span></span>
+      </a>
+      <a class="easel-card" href="gallery.html#p9">
+        <span class="new-drop" aria-hidden="true">new</span>
+        <img src="images/banksia-bloom.jpg" alt="Bold acrylic painting of banksia and native blooms in reds, greens and gold on a magenta background." loading="lazy"/>
+        <span class="easel-cap"><span class="hand">the natives, back and louder</span></span>
+      </a>
+      <a class="easel-card easel-card--sq" href="gallery.html#p11">
+        <span class="new-drop" aria-hidden="true">new</span>
+        <img src="images/hex-pour-ember.jpg" alt="Hexagonal acrylic pour held in a hand — embers of red, gold and white swirling through deep blue." loading="lazy"/>
+        <span class="easel-cap"><span class="hand">embers in a blue sea</span></span>
+      </a>
+      <a class="easel-card" href="gallery.html#p15">
+        <span class="new-drop" aria-hidden="true">new</span>
+        <img src="images/riviera-red-car.jpg" alt="Painting of a little red car parked below terracotta coastal houses by the sea." loading="lazy"/>
+        <span class="easel-cap"><span class="hand">somewhere with warm windows</span></span>
+      </a>
+      <a class="easel-card" href="gallery.html#p16">
+        <span class="new-drop" aria-hidden="true">new</span>
+        <img src="images/island-steps.jpg" alt="Painting of a sunny island street with striped steps and a wavy blue painted border." loading="lazy"/>
+        <span class="easel-cap"><span class="hand">steps to the sun</span></span>
+      </a>
+      <a class="easel-card easel-card--more" href="gallery.html">
+        <span class="easel-more">
+          <svg viewBox="0 0 40 44" aria-hidden="true"><polygon points="20,2 38,12 38,32 20,42 2,32 2,12" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+          see the whole gallery
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <!-- MANIFESTO -->
+  <section class="manifesto reveal">
+    <p class="kicker">— a note from the painter</p>
+    <h2 class="display manifesto-text">
+      art is how i <em>feel things</em> out loud.
+      a quiet way to say the colour of a thursday,
+      or the weight of a soft sunday.
+      <span class="hand-aside">this is where it all lives.</span>
+    </h2>
+  </section>
+
+  <!-- THREE DOORS -->
+  <section class="doors reveal" aria-label="Explore the site">
+    <div class="section-head">
+      <p class="kicker">— three little doors</p>
+      <h2 class="display">where would you like to wander?</h2>
+    </div>
+
+    <div class="doors-grid">
+      <a class="door" href="gallery.html">
+        <div class="door-hex">
+          <img src="images/stained-glass-birds.jpg" alt="" loading="lazy"/>
+          <div class="paint-blend paint-blend--teal" aria-hidden="true"></div>
+        </div>
+        <h3 class="display door-title">the gallery</h3>
+        <p class="door-blurb">nineteen paintings, each one a feeling. filters, stories, the lot.</p>
+        <span class="door-cue hand">step inside →</span>
+      </a>
+
+      <a class="door" href="artist.html">
+        <div class="door-hex">
+          <img src="images/thabu-portrait.jpg" alt="" loading="lazy"/>
+          <div class="paint-blend paint-blend--rose" aria-hidden="true"></div>
+        </div>
+        <h3 class="display door-title">the artist</h3>
+        <p class="door-blurb">meet thabu — the hands, the light, the cat that supervises.</p>
+        <span class="door-cue hand">say hello →</span>
+      </a>
+
+      <a class="door" href="play.html">
+        <div class="door-hex door-hex--paint">
+          <img src="images/hex-pour-rainbow.jpg" alt="" loading="lazy"/>
+          <div class="paint-blend paint-blend--gold" aria-hidden="true"></div>
+        </div>
+        <h3 class="display door-title">the play studio</h3>
+        <p class="door-blurb">pour your own hexagon, find the colour of your day, pull a prompt.</p>
+        <span class="door-cue hand">get your hands messy →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- PROCESS TEASE -->
+  <section class="process reveal">
+    <figure class="process-img">
+      <img src="images/painters-hand.jpg" alt="A hand covered in blue, green and red paint, held up to a window with grass outside." loading="lazy"/>
+      <span class="process-tag hand">and then she started painting again.</span>
+    </figure>
+    <div class="process-text">
+      <p class="kicker">— how it begins</p>
+      <h2 class="display">
+        a feeling, a brush,<br/>
+        and a window full of grass.
+      </h2>
+      <p class="lede">
+        most pieces start as a colour stuck in her head. by the time the
+        canvas is done her hands are usually <em>louder</em> than the
+        painting.
+      </p>
+      <p class="lede">
+        the studio is small. the light is honest. the cat is nearby.
+      </p>
+      <a href="artist.html" class="btn btn--ghost process-btn">meet the painter</a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="hello reveal" id="hello">
+    <p class="kicker">— say hi</p>
+    <h2 class="display">if a piece <em>spoke</em> to you,<br/>i'd love to know.</h2>
+    <p class="lede">
+      no shop, no commissions — just a small inbox kept open for kind words,
+      questions, and quiet conversations about colour.
+    </p>
+
+    <div class="contact-actions">
+      <a class="btn btn--primary" href="https://www.instagram.com/ink_n_whiskers/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6">
+          <rect x="3" y="3" width="18" height="18" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+        find me on instagram
+      </a>
+      <a class="btn btn--ghost" href="mailto:thabujacobchakola@gmail.com">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6">
+          <rect x="3" y="5" width="18" height="14" rx="2"/>
+          <path d="M3 7l9 7 9-7"/>
+        </svg>
+        send a letter
+      </a>
+    </div>
+
+    <p class="hello-byline">
+      <span class="hand">— thabu jacob</span>
+      <span class="hello-email">thabujacobchakola@gmail.com</span>
+    </p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="foot">
+    <div class="foot-grid">
+      <div class="foot-mark">
+        <svg viewBox="0 0 40 44" aria-hidden="true">
+          <polygon points="20,2 38,12 38,32 20,42 2,32 2,12" fill="none" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <span class="hand">ink &amp; whiskers</span>
+      </div>
+      <ul class="foot-links">
+        <li><a href="gallery.html">gallery</a></li>
+        <li><a href="artist.html">the artist</a></li>
+        <li><a href="play.html">play studio</a></li>
+      </ul>
+      <p class="foot-line">made with paint, patience, and a little hex-shaped joy. <span class="hand">© 2026 thabu jacob.</span></p>
+      <p class="foot-credit">a small static site — built to be hosted anywhere quiet.</p>
+    </div>
+  </footer>
+
+  <!-- peek cat easter egg -->
+  <div class="peek-cat" id="peekCat" aria-hidden="true">
+    <svg viewBox="0 0 80 80">
+      <polygon points="14,46 22,28 30,46" fill="#1A1612"/>
+      <polygon points="50,46 58,28 66,46" fill="#1A1612"/>
+      <ellipse cx="40" cy="56" rx="28" ry="20" fill="#1A1612"/>
+      <circle cx="30" cy="54" r="2.4" fill="#F5EFE4"/>
+      <circle cx="50" cy="54" r="2.4" fill="#F5EFE4"/>
+      <line x1="8" y1="60" x2="22" y2="60" stroke="#1A1612" stroke-width="1.2"/>
+      <line x1="58" y1="60" x2="72" y2="60" stroke="#1A1612" stroke-width="1.2"/>
+      <line x1="10" y1="64" x2="22" y2="63" stroke="#1A1612" stroke-width="1.2"/>
+      <line x1="58" y1="63" x2="70" y2="64" stroke="#1A1612" stroke-width="1.2"/>
+      <polygon points="38,60 42,60 40,63" fill="#B83A5C"/>
+    </svg>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

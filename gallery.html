@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>the gallery — ink &amp; whiskers</title>
+  <meta name="description" content="The full gallery of paintings by Thabu Jacob (@ink_n_whiskers) — acrylic pours, stained-glass pieces, native florals, whiskers and sunny places." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50,4 92,28 92,72 50,96 8,72 8,28' fill='%231A1612'/%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="gallery">
+
+  <div class="ink-wipe ink-wipe--in" id="inkWipe" aria-hidden="true"></div>
+
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <div class="scroll-progress" aria-hidden="true">
+    <svg viewBox="0 0 40 44">
+      <polygon class="hex-outline" points="20,2 38,12 38,32 20,42 2,32 2,12" />
+      <polygon class="hex-fill" id="hexFill" points="20,2 38,12 38,32 20,42 2,32 2,12" />
+    </svg>
+  </div>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-mark" aria-label="ink and whiskers — home">
+      <svg viewBox="0 0 40 44" aria-hidden="true">
+        <polygon points="20,2 38,12 38,32 20,42 2,32 2,12" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="20" y="27" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="16" fill="currentColor">i</text>
+      </svg>
+      <span>ink &amp; whiskers</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">home</a></li>
+      <li><a href="gallery.html" class="is-active" aria-current="page">gallery</a></li>
+      <li><a href="artist.html">the artist</a></li>
+      <li><a href="play.html" class="nav-play">play studio <span class="nav-dot" aria-hidden="true"></span></a></li>
+      <li><a href="#hello">say hi</a></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <header class="page-hero">
+    <p class="kicker">— the gallery</p>
+    <h1 class="display page-title">small things,<br/><em>big colour.</em></h1>
+    <p class="lede page-lede">
+      every piece started as a feeling. tap any one to read what it
+      was saying at the time — the newest ones wear a little
+      <span class="new-drop new-drop--inline">new</span> drop.
+    </p>
+  </header>
+
+  <!-- GALLERY -->
+  <section class="gallery gallery--page" id="gallery">
+    <div class="filters filters--page" role="tablist" aria-label="Filter artwork">
+      <button class="filter is-active" data-filter="all" role="tab">all</button>
+      <button class="filter" data-filter="pour" role="tab">pours</button>
+      <button class="filter" data-filter="glass" role="tab">stained glass</button>
+      <button class="filter" data-filter="floral" role="tab">florals</button>
+      <button class="filter" data-filter="cat" role="tab">whiskers</button>
+      <button class="filter" data-filter="place" role="tab">sunny places</button>
+    </div>
+
+    <div class="art-grid" id="artGrid">
+
+      <figure class="art art--tall art--feature" data-cat="glass floral" data-id="1" id="p1">
+        <div class="art-wrap">
+          <img src="images/stained-glass-birds.jpg" alt="Stained-glass painting of a peacock and phoenix among roses and sunflowers" loading="lazy"/>
+        </div>
+        <figcaption>
+          <span class="art-num">01</span>
+          <span class="art-title">the birds stole the spotlight</span>
+          <span class="art-meta">glass paint · 2026</span>
+        </figcaption>
+      </figure>
+
+      <figure class="art" data-cat="cat" data-id="2" id="p2">
+        <div class="art-wrap">
+          <img src="images/cat-daisies.jpg" alt="Painting of a ginger and white cat in a field of daisies" loading="lazy"/>
+        </div>
+        <figcaption>
+          <span class="art-num">02</span>
+          <span class="art-title">a little soul, soft strokes</span>
+          <span class="art-meta">acrylic on canvas</span>
+        </figcaption>
+      </figure>
+
+      <figure class="art art--hex" data-cat="pour" data-id="3" id="p3">
+        <div class="art-wrap art-wrap--hex">
+          <img src="images/hex-pour-cosmic.jpg" alt="Hexagonal acrylic pour with deep blues, swirling reds and gold cells" loading="lazy"/>
+        </div>
+        <figcaption>
+          <span class="art-num">03</span>
+          <span class="art-title">one pour, endless details</span>
+          <span class="art-meta">acrylic pour · hex canvas</span>
+        </figcaption>
+      </figure>
+
+      <figure class="art art--tall" data-cat="floral" data-id="4" id="p4">
+        <div class="art-wrap">
+          <img src="images/waratah.jpg" alt="Bold acrylic painting of a red waratah and banksia flowers on a deep magenta background" loading="lazy"/>
+        </div>
+        <figcaption>
+          <span class="art-num">04</span>
+          <span class="art-title">waratah, loud and home</span>
+          <span class="art-meta">acrylic on canvas</span>
+        </figcaption>
+      </figure>
+
+      <figure class="art art--wide" data-cat="pour" data-id="5" id="p5">
+        <div class="art-wrap">
+          <img src="images/ocean-pour.jpg" alt="Acrylic pour painting in stormy blues, whites and silvers" loading="lazy"/>
+        </div>
+        <figcaption>
+          <span class="art-num">05</span>
+          <span class="art-title">and this time, for herself</span>
+          <span class="art-meta">acrylic pour · 24″ canvas</span>
+        </figcaption>
+      </figure>
+
+      <figure class="art art--hex" data-cat="pour" data-id="6" id="p6">
+        <div class="art-wrap art-wrap--hex">
+          <img src="images/hex-pour-teal.jpg" alt="Hexagonal acrylic pour in teal, turquoise and red cells" loading="lazy"/>
+        </div>
+        <figcaption>
+          <span class="art-num">06</span>
+          <span class="art-title">a quiet kind of ocean</span>
+          <span class="art-meta">acrylic pour · hex canvas</span>
+        </figcaption>
+      </figure>
+
+      <figure class="art art--hex" data-cat="pour" data-id="7" id="p7">
+        <div class="art-wrap art-wrap--hex">
+          <img src="images/hex-pour-rainbow.jpg" alt="Hexagonal acrylic pour with red, orange, yellow and teal cells" loading="lazy"/>
+        </div>
+        <figcaption>
+          <span class="art-num">07</span>
+          <span class="art-title">the whole palette, changing</span>
+          <span class="art-meta">acrylic pour · hex canvas</span>
+        </figcaption>
+      </figure>
+
+      <figure class="art art--tall is-new" data-cat="cat" data-id="8" id="p8">
+        <div class="art-wrap">
+          <img src="images/kitten-daisies.jpg" alt="Painting of a ginger and white kitten looking up at a blue summer sky, surrounded by white daisies" loading="lazy"/>
+        </div>
+        <figcaption>
+          <span class="art-num">08</span>
+          <span class="art-title">sun on his face, daisies everywhere</span>
+          <span class="art-meta">acrylic on canvas · new</span>
+        </figcaption>
+      </figure>
+
+      <figure class="art is-new" data-cat="floral" data-id="9" id="p9">
+        <div class="art-wrap">
+          <img src="images/banksia-bloom.jpg" alt="Bold acrylic painting of banksia and native blooms in red, green and gold on a magenta background" loading="lazy"/>
+        </div>
+        <figcaption>
+          <span class="art-num">09</span>
+          <span class="art-title">the natives, back and louder</span>
+          <span class="art-meta">acrylic on canvas · new</span>
+        </figcaption>
+      </figure>
+
+      <figure class="art art--wide is-new" data-cat="pour" data-id="10" id="p10">
+        <div class="art-wrap">
+          <img src="images/storm-pour.jpg" alt="A large square acrylic pour canvas in stormy blues, silvers and whites" loading="lazy"/>
+        </div>
+        <figcaption>
+          <span class="art-num">10</span>
+          <span class="art-title">a storm she poured on purpose</span>
+          <span class="art-meta">acrylic pour · big canvas · new</span>
+        </figcaption>
+      </figure>
+
+      <figure class="art art--hex is-new" data-cat="pour" data-id="11" id="p11">
+        <div class="art-wrap art-wrap--hex">
+          <img src="images/hex-pour-ember.jpg" alt="Hexagonal acrylic pour — embers of red, gold and white swirling through deep blue" loading="lazy"/>
+        </div>
+        <figcaption>
+          <span class="art-num">11</span>
+          <span class="art-title">embers in a blue sea</span>
+          <span class="art-meta">acrylic pour · hex canvas · new</span>
+        </figcaption>
+      </figure>
+
+      <figure class="art art--hex is-new" data-cat="pour" data-id="12" id="p12">
+        <div class="art-wrap art-wrap--hex">
+          <img src="images/hex-pour-garden.jpg" alt="Hexagonal acrylic pour with cells of yellow, teal, olive and red, like a garden from above" loading="lazy"/>
+        </div>
+        <figcaption>
+          <span class="art-num">12</span>
+          <span class="art-title">a garden, if you squint</span>
+          <span class="art-meta">acrylic pour · hex canvas · new</span>
+        </figcaption>
+      </figure>
+
+      <figure class="art is-new" data-cat="pour" data-id="13" id="p13">
+        <div class="art-wrap">
+          <img src="images/hex-windowsill.jpg" alt="A blue hexagonal pour painting sunbathing on a windowsill beside a small succulent" loading="lazy"/>
+        </div>
+        <figcaption>
+          <span class="art-num">13</span>
+          <span class="art-title">a hexagon, sunbathing</span>
+          <span class="art-meta">acrylic pour · windowsill · new</span>
+        </figcaption>
+      </figure>
+
+      <figure class="art is-new" data-cat="glass" data-id="14" id="p14">
+        <div class="art-wrap">
+          <img src="images/courage-in-glass.jpg" alt="Glass painting of a cosy cartoon living room scene, held up against the sky" loading="lazy"/>
+        </div>
+        <figcaption>
+          <span class="art-num">14</span>
+          <span class="art-title">saturday mornings, in glass</span>
+          <span class="art-meta">glass paint · new</span>
+        </figcaption>
+      </figure>
+
+      <figure class="art art--tall is-new" data-cat="place" data-id="15" id="p15">
+        <div class="art-wrap">
+          <img src="images/riviera-red-car.jpg" alt="Painting of a little red car parked below terracotta coastal houses by a deep blue sea" loading="lazy"/>
+        </div>
+        <figcaption>
+          <span class="art-num">15</span>
+          <span class="art-title">somewhere with warm windows</span>
+          <span class="art-meta">acrylic on canvas · new</span>
+        </figcaption>
+      </figure>
+
+      <figure class="art art--tall is-new" data-cat="place" data-id="16" id="p16">
+        <div class="art-wrap">
+          <img src="images/island-steps.jpg" alt="Painting of a sunny island street with striped steps, white buildings and a wavy blue border" loading="lazy"/>
+        </div>
+        <figcaption>
+          <span class="art-num">16</span>
+          <span class="art-title">steps to the sun</span>
+          <span class="art-meta">acrylic on canvas · new</span>
+        </figcaption>
+      </figure>
+
+      <figure class="art art--tall is-new" data-cat="glass floral" data-id="17" id="p17">
+        <div class="art-wrap">
+          <img src="images/birds-in-hand.jpg" alt="The stained-glass birds piece held up to the window light, colours glowing through" loading="lazy"/>
+        </div>
+        <figcaption>
+          <span class="art-num">17</span>
+          <span class="art-title">held up to the light</span>
+          <span class="art-meta">glass paint · in the wild · new</span>
+        </figcaption>
+      </figure>
+
+    </div>
+
+    <p class="gallery-foot hand reveal">— that's everything on the walls, for now. new colours arrive whenever thursday feels like it.</p>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="hello reveal" id="hello">
+    <p class="kicker">— say hi</p>
+    <h2 class="display">if a piece <em>spoke</em> to you,<br/>i'd love to know.</h2>
+    <p class="lede">
+      no shop, no commissions — just a small inbox kept open for kind words,
+      questions, and quiet conversations about colour.
+    </p>
+    <div class="contact-actions">
+      <a class="btn btn--primary" href="https://www.instagram.com/ink_n_whiskers/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6">
+          <rect x="3" y="3" width="18" height="18" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+        find me on instagram
+      </a>
+      <a class="btn btn--ghost" href="mailto:thabujacobchakola@gmail.com">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6">
+          <rect x="3" y="5" width="18" height="14" rx="2"/>
+          <path d="M3 7l9 7 9-7"/>
+        </svg>
+        send a letter
+      </a>
+    </div>
+    <p class="hello-byline">
+      <span class="hand">— thabu jacob</span>
+      <span class="hello-email">thabujacobchakola@gmail.com</span>
+    </p>
+  </section>
+
+  <footer class="foot">
+    <div class="foot-grid">
+      <div class="foot-mark">
+        <svg viewBox="0 0 40 44" aria-hidden="true">
+          <polygon points="20,2 38,12 38,32 20,42 2,32 2,12" fill="none" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <span class="hand">ink &amp; whiskers</span>
+      </div>
+      <ul class="foot-links">
+        <li><a href="gallery.html">gallery</a></li>
+        <li><a href="artist.html">the artist</a></li>
+        <li><a href="play.html">play studio</a></li>
+      </ul>
+      <p class="foot-line">made with paint, patience, and a little hex-shaped joy. <span class="hand">© 2026 thabu jacob.</span></p>
+      <p class="foot-credit">a small static site — built to be hosted anywhere quiet.</p>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lb-close" id="lbClose" aria-label="close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 5l14 14M19 5L5 19"/></svg>
+    </button>
+    <button class="lb-arrow lb-prev" id="lbPrev" aria-label="previous painting">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <button class="lb-arrow lb-next" id="lbNext" aria-label="next painting">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+    <div class="lb-stage">
+      <img id="lbImg" src="" alt="" />
+      <div class="lb-caption">
+        <p class="kicker" id="lbNum">— 01</p>
+        <h3 class="display" id="lbTitle">title</h3>
+        <p class="hand" id="lbWords">caption</p>
+        <p class="lb-meta" id="lbMeta">medium</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="peek-cat" id="peekCat" aria-hidden="true">
+    <svg viewBox="0 0 80 80">
+      <polygon points="14,46 22,28 30,46" fill="#1A1612"/>
+      <polygon points="50,46 58,28 66,46" fill="#1A1612"/>
+      <ellipse cx="40" cy="56" rx="28" ry="20" fill="#1A1612"/>
+      <circle cx="30" cy="54" r="2.4" fill="#F5EFE4"/>
+      <circle cx="50" cy="54" r="2.4" fill="#F5EFE4"/>
+      <line x1="8" y1="60" x2="22" y2="60" stroke="#1A1612" stroke-width="1.2"/>
+      <line x1="58" y1="60" x2="72" y2="60" stroke="#1A1612" stroke-width="1.2"/>
+      <line x1="10" y1="64" x2="22" y2="63" stroke="#1A1612" stroke-width="1.2"/>
+      <line x1="58" y1="63" x2="70" y2="64" stroke="#1A1612" stroke-width="1.2"/>
+      <polygon points="38,60 42,60 40,63" fill="#B83A5C"/>
+    </svg>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
