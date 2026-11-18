@@ -245,6 +245,7 @@
     const btnNext = document.getElementById('lbNext');
 
     let currentIdx = -1;
+    let previousFocus = null;
 
     const visibleArts = () => arts.filter((a) => !a.classList.contains('is-hidden'));
 
@@ -252,6 +253,7 @@
       const list = visibleArts();
       currentIdx = list.indexOf(art);
       if (currentIdx === -1) return;
+      previousFocus = document.activeElement;
       render(list[currentIdx]);
       lightbox.classList.add('is-open');
       lightbox.setAttribute('aria-hidden', 'false');
@@ -282,6 +284,8 @@
       lightbox.classList.remove('is-open');
       lightbox.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
+      if (previousFocus && previousFocus.isConnected && typeof previousFocus.focus === 'function') previousFocus.focus();
+      previousFocus = null;
     };
 
     arts.forEach((art) => {
@@ -300,7 +304,14 @@
 
     document.addEventListener('keydown', (e) => {
       if (!lightbox.classList.contains('is-open')) return;
-      if (e.key === 'Escape') close();
+      if (e.key === 'Escape') { e.preventDefault(); close(); }
+      if (e.key === 'Tab') {
+        const focusable = Array.from(lightbox.querySelectorAll('button, a[href], [tabindex]:not([tabindex="-1"])')).filter(el => !el.disabled && el.getClientRects().length);
+        if (!focusable.length) { e.preventDefault(); return; }
+        const first = focusable[0], last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
       if (e.key === 'ArrowLeft') step(-1);
       if (e.key === 'ArrowRight') step(1);
     });
