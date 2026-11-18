@@ -223,6 +223,7 @@
       btn.addEventListener('click', () => {
         filters.forEach((b) => b.classList.remove('is-active'));
         btn.classList.add('is-active');
+        filters.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
         const f = btn.dataset.filter;
         arts.forEach((a) => {
           const show = f === 'all' || (a.dataset.cat || '').split(' ').includes(f);
