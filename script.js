@@ -63,6 +63,36 @@
           meta: 'glass paint · in the wild · new' }
   };
 
+  /* ---- Responsive primary navigation ---- */
+  const nav = document.querySelector('.nav');
+  const navToggle = nav?.querySelector('.nav-toggle');
+  const navLinks = nav?.querySelector('.nav-links');
+  if (navToggle && navLinks) {
+    const closeNav = (returnFocus = false) => {
+      nav.classList.remove('nav-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-label', 'Open navigation');
+      if (returnFocus) navToggle.focus();
+    };
+    navToggle.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('nav-open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+      navToggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+    });
+    navLinks.addEventListener('click', (event) => {
+      if (event.target.closest('a')) closeNav();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && nav.classList.contains('nav-open')) closeNav(true);
+    });
+    document.addEventListener('pointerdown', (event) => {
+      if (nav.classList.contains('nav-open') && !nav.contains(event.target)) closeNav();
+    });
+    matchMedia('(min-width: 721px)').addEventListener('change', (event) => {
+      if (event.matches) closeNav();
+    });
+  }
+
   /* ---- Ink entry / page-wipe transitions ---- */
   const curtain = document.getElementById('inkCurtain');
   if (curtain) {
