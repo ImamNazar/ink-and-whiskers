@@ -57,13 +57,13 @@
 
   <!-- GALLERY -->
   <section class="gallery gallery--page" id="gallery">
-    <div class="filters filters--page" role="tablist" aria-label="Filter artwork">
-      <button class="filter is-active" data-filter="all" role="tab">all</button>
-      <button class="filter" data-filter="pour" role="tab">pours</button>
-      <button class="filter" data-filter="glass" role="tab">stained glass</button>
-      <button class="filter" data-filter="floral" role="tab">florals</button>
-      <button class="filter" data-filter="cat" role="tab">whiskers</button>
-      <button class="filter" data-filter="place" role="tab">sunny places</button>
+    <div class="filters filters--page" role="group" aria-label="Filter artwork">
+      <button class="filter is-active" data-filter="all" aria-pressed="true">all</button>
+      <button class="filter" data-filter="pour" aria-pressed="false">pours</button>
+      <button class="filter" data-filter="glass" aria-pressed="false">stained glass</button>
+      <button class="filter" data-filter="floral" aria-pressed="false">florals</button>
+      <button class="filter" data-filter="cat" aria-pressed="false">whiskers</button>
+      <button class="filter" data-filter="place" aria-pressed="false">sunny places</button>
     </div>
 
     <div class="art-grid" id="artGrid">
@@ -310,7 +310,7 @@
   </footer>
 
   <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Artwork details" aria-hidden="true">
     <button class="lb-close" id="lbClose" aria-label="close">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 5l14 14M19 5L5 19"/></svg>
     </button>
