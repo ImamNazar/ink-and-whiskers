@@ -8,7 +8,19 @@ for (const path of pages) {
       await page.goto('/'+path);
       await expect(page.locator('.nav-mark')).toBeVisible();
       await expect(page.locator('body')).toBeVisible();
-      await expect.poll(async()=>page.evaluate(()=>document.documentElement.scrollWidth <= innerWidth+2)).toBe(true);
+      await expect.poll(async()=>{
+        const layout=await page.evaluate(()=>{
+          const width=innerWidth;
+          const overflow=[...document.querySelectorAll('body *')].filter(el=>{
+            const rect=el.getBoundingClientRect();
+            const css=getComputedStyle(el);
+            return css.position!=='fixed' && css.display!=='none' && rect.width>0 && (rect.right>width+2 || rect.left< -2);
+          }).slice(0,12).map(el=>({tag:el.tagName,cls:String(el.className).slice(0,80),left:Math.round(el.getBoundingClientRect().left),right:Math.round(el.getBoundingClientRect().right)}));
+          return {fits:document.documentElement.scrollWidth<=width+2,scrollWidth:document.documentElement.scrollWidth,width,overflow};
+        });
+        if(!layout.fits) console.log('MOBILE OVERFLOW DIAGNOSTICS',path,width,JSON.stringify(layout));
+        return layout.fits;
+      }).toBe(true);
       if(width<=720){
         const toggle=page.locator('.nav-toggle');
         await expect(toggle).toBeVisible();
