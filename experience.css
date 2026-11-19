@@ -17,3 +17,14 @@
 .sketch-cat-note {font-family:var(--hand);font-size:1.4rem;margin:.5rem 0;color:var(--ink-soft);}
 @media(max-width:720px){.desk-panel{grid-template-columns:1fr}.desk-ink{min-height:230px;max-height:350px}.desk-section{margin:1rem auto 3rem}}
 @media(prefers-reduced-motion:reduce){.hero-art .float-hex,.hero-art .float-blob{translate:none}.desk-ink,.desk-swatch{transition:none}}
+
+/* Keep decorative compositions inside narrow mobile viewports without
+   hiding the page's real content or introducing horizontal scrolling. */
+@media (max-width: 480px) {
+  .hero, .painter--page, .page-hero, .manifesto, .process, .doors,
+  .desk-section { max-width: 100%; min-width: 0; }
+  .hero-art, .painter-visual, .painter--page, .hero-grid,
+  .process-img { min-width: 0; }
+  .hero-art, .painter--page { overflow-x: clip; }
+  .display, .lede, .hand, .painter--page p { overflow-wrap: anywhere; }
+}
