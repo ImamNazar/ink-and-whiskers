@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="experience.css" />
 </head>
 <body data-page="gallery">
 
@@ -35,12 +36,13 @@
       </svg>
       <span>ink &amp; whiskers</span>
     </a>
-    <ul class="nav-links">
+    <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primaryNav"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="primaryNav">
       <li><a href="index.html">home</a></li>
       <li><a href="gallery.html" class="is-active" aria-current="page">gallery</a></li>
       <li><a href="artist.html">the artist</a></li>
       <li><a href="play.html" class="nav-play">play studio <span class="nav-dot" aria-hidden="true"></span></a></li>
-      <li><a href="#hello">say hi</a></li>
+      <li><a href="index.html#hello">say hi</a></li>
     </ul>
   </nav>
 
@@ -57,13 +59,13 @@
 
   <!-- GALLERY -->
   <section class="gallery gallery--page" id="gallery">
-    <div class="filters filters--page" role="tablist" aria-label="Filter artwork">
-      <button class="filter is-active" data-filter="all" role="tab">all</button>
-      <button class="filter" data-filter="pour" role="tab">pours</button>
-      <button class="filter" data-filter="glass" role="tab">stained glass</button>
-      <button class="filter" data-filter="floral" role="tab">florals</button>
-      <button class="filter" data-filter="cat" role="tab">whiskers</button>
-      <button class="filter" data-filter="place" role="tab">sunny places</button>
+    <div class="filters filters--page" role="group" aria-label="Filter artwork">
+      <button class="filter is-active" data-filter="all" aria-pressed="true">all</button>
+      <button class="filter" data-filter="pour" aria-pressed="false">pours</button>
+      <button class="filter" data-filter="glass" aria-pressed="false">stained glass</button>
+      <button class="filter" data-filter="floral" aria-pressed="false">florals</button>
+      <button class="filter" data-filter="cat" aria-pressed="false">whiskers</button>
+      <button class="filter" data-filter="place" aria-pressed="false">sunny places</button>
     </div>
 
     <div class="art-grid" id="artGrid">
@@ -310,7 +312,7 @@
   </footer>
 
   <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Artwork details" aria-hidden="true">
     <button class="lb-close" id="lbClose" aria-label="close">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 5l14 14M19 5L5 19"/></svg>
     </button>
@@ -347,5 +349,6 @@
   </div>
 
   <script src="script.js"></script>
+  <script src="experience.js" defer></script>
 </body>
 </html>

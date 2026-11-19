@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="experience.css" />
 </head>
 <body data-page="play">
 
@@ -35,12 +36,13 @@
       </svg>
       <span>ink &amp; whiskers</span>
     </a>
-    <ul class="nav-links">
+    <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primaryNav"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="primaryNav">
       <li><a href="index.html">home</a></li>
       <li><a href="gallery.html">gallery</a></li>
       <li><a href="artist.html">the artist</a></li>
       <li><a href="play.html" class="is-active nav-play" aria-current="page">play studio <span class="nav-dot" aria-hidden="true"></span></a></li>
-      <li><a href="#hello">say hi</a></li>
+      <li><a href="index.html#hello">say hi</a></li>
     </ul>
   </nav>
 
@@ -233,6 +235,7 @@
   </div>
 
   <script src="script.js"></script>
+  <script src="experience.js" defer></script>
   <script src="play.js"></script>
 </body>
 </html>

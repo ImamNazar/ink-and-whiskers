@@ -1,0 +1,30 @@
+/* Living Sketchbook — progressive enhancement layer */
+.hero-art .float-hex, .hero-art .float-blob { translate: 0 var(--drift-y,0px); }
+.lightbox.is-open { background: radial-gradient(ellipse at 50% 35%,var(--art-ambient,#425d61),#171410 78%); }
+.lightbox .lb-stage img { filter:none; }
+.desk-section { position:relative;z-index:2;max-width:var(--max);margin:3rem auto 5rem;padding:clamp(1.2rem,4vw,3rem); }
+.desk-panel {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.5rem,5vw,5rem);align-items:center;background:#eee3d1;border:1px solid var(--rule);border-radius:24px;padding:clamp(1.5rem,5vw,4rem);overflow:hidden;}
+.desk-copy .display {font-size:clamp(2.4rem,5vw,4.5rem);margin:.5rem 0 1rem;}
+.desk-copy .lede {max-width:42ch;}
+.desk-ink {--ink-one:#B83A5C;--ink-two:#0E5D62;position:relative;min-height:320px;aspect-ratio:1.2;background:radial-gradient(ellipse at 35% 35%,var(--ink-one) 0 18%,transparent 19%),radial-gradient(ellipse at 62% 60%,var(--ink-two) 0 25%,transparent 26%),radial-gradient(ellipse at 50% 50%,#fff8ec 0 60%,transparent 61%);filter:drop-shadow(0 20px 24px rgba(26,22,18,.12));border-radius:45% 55% 56% 44% / 53% 37% 63% 47%;transition:background .4s ease;}
+.desk-ink::after {content:'';position:absolute;inset:16%;border:3px solid rgba(26,22,18,.12);border-radius:55% 45% 40% 60%;transform:rotate(-22deg);pointer-events:none;}
+.desk-palette {display:flex;flex-wrap:wrap;gap:.65rem;margin:1.2rem 0;}
+.desk-swatch {width:48px;height:48px;border-radius:50%;background:var(--swatch);border:3px solid #fff;box-shadow:0 0 0 1px rgba(26,22,18,.2);transition:transform .2s;}
+.desk-swatch:hover,.desk-swatch:focus-visible {transform:translateY(-4px);}
+.desk-swatch[aria-pressed=true] {outline:2px solid var(--ink);outline-offset:3px;}
+.desk-color-name {font-family:var(--hand);font-size:1.6rem;color:var(--ink-soft);}
+.sketch-cat-button {display:inline-flex;align-items:center;gap:.5rem;min-height:44px;padding:.5rem .9rem;border:1px solid var(--rule);border-radius:999px;background:var(--paper);font-family:var(--hand);font-size:1.4rem;}
+.sketch-cat-note {font-family:var(--hand);font-size:1.4rem;margin:.5rem 0;color:var(--ink-soft);}
+@media(max-width:720px){.desk-panel{grid-template-columns:1fr}.desk-ink{min-height:230px;max-height:350px}.desk-section{margin:1rem auto 3rem}}
+@media(prefers-reduced-motion:reduce){.hero-art .float-hex,.hero-art .float-blob{translate:none}.desk-ink,.desk-swatch{transition:none}}
+
+/* Keep decorative compositions inside narrow mobile viewports without
+   hiding the page's real content or introducing horizontal scrolling. */
+@media (max-width: 480px) {
+  .hero, .painter--page, .page-hero, .manifesto, .process, .doors,
+  .desk-section { max-width: 100%; min-width: 0; }
+  .hero-art, .painter-visual, .painter--page, .hero-grid,
+  .process-img { min-width: 0; }
+  .hero-art, .painter--page { overflow-x: clip; }
+  .display, .lede, .hand, .painter--page p { overflow-wrap: anywhere; }
+}

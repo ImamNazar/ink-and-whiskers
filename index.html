@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="experience.css" />
 </head>
 <body data-page="home">
 
@@ -57,7 +58,8 @@
       </svg>
       <span>ink &amp; whiskers</span>
     </a>
-    <ul class="nav-links">
+    <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primaryNav"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="primaryNav">
       <li><a href="index.html" class="is-active" aria-current="page">home</a></li>
       <li><a href="gallery.html">gallery</a></li>
       <li><a href="artist.html">the artist</a></li>
@@ -255,6 +257,27 @@
     </div>
   </section>
 
+  <!-- THE LIVING SKETCHBOOK: INTERACTIVE ARTIST'S DESK -->
+  <section class="desk-section" id="artistsDesk" aria-labelledby="deskTitle">
+    <div class="desk-panel">
+      <div class="desk-copy">
+        <p class="kicker">— a corner of the studio</p>
+        <h2 class="display" id="deskTitle">a little colour <em>experiment.</em></h2>
+        <p class="lede">Every painting starts with a feeling. Choose a palette and watch the ink find a new mood.</p>
+        <div class="desk-palette" role="group" aria-label="Choose an ink palette">
+          <button class="desk-swatch" type="button" style="--swatch:#B83A5C" data-ink="#B83A5C" data-ink-two="#0E5D62" data-name="rose & deep teal" aria-label="Rose and deep teal" aria-pressed="true"></button>
+          <button class="desk-swatch" type="button" style="--swatch:#C99D3F" data-ink="#C99D3F" data-ink-two="#B83A5C" data-name="golden afternoon" aria-label="Golden afternoon" aria-pressed="false"></button>
+          <button class="desk-swatch" type="button" style="--swatch:#2C5F2D" data-ink="#2C5F2D" data-ink-two="#7AA7A0" data-name="garden light" aria-label="Garden light" aria-pressed="false"></button>
+          <button class="desk-swatch" type="button" style="--swatch:#4B6690" data-ink="#4B6690" data-ink-two="#C58B65" data-name="blue hour" aria-label="Blue hour" aria-pressed="false"></button>
+        </div>
+        <p class="desk-color-name" aria-live="polite">rose &amp; deep teal</p>
+        <button class="sketch-cat-button" id="sketchCat" type="button" aria-controls="sketchCatNote">🐈 ask the studio cat</button>
+        <p class="sketch-cat-note" id="sketchCatNote" aria-live="polite" hidden></p>
+      </div>
+      <div class="desk-ink" role="img" aria-label="Decorative abstract ink shapes that change colour when a palette is selected"></div>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section class="hello reveal" id="hello">
     <p class="kicker">— say hi</p>
@@ -324,5 +347,6 @@
   </div>
 
   <script src="script.js"></script>
+  <script src="experience.js" defer></script>
 </body>
 </html>

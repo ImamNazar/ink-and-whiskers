@@ -63,6 +63,36 @@
           meta: 'glass paint · in the wild · new' }
   };
 
+  /* ---- Responsive primary navigation ---- */
+  const nav = document.querySelector('.nav');
+  const navToggle = nav?.querySelector('.nav-toggle');
+  const navLinks = nav?.querySelector('.nav-links');
+  if (navToggle && navLinks) {
+    const closeNav = (returnFocus = false) => {
+      nav.classList.remove('nav-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-label', 'Open navigation');
+      if (returnFocus) navToggle.focus();
+    };
+    navToggle.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('nav-open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+      navToggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+    });
+    navLinks.addEventListener('click', (event) => {
+      if (event.target.closest('a')) closeNav();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && nav.classList.contains('nav-open')) closeNav(true);
+    });
+    document.addEventListener('pointerdown', (event) => {
+      if (nav.classList.contains('nav-open') && !nav.contains(event.target)) closeNav();
+    });
+    matchMedia('(min-width: 721px)').addEventListener('change', (event) => {
+      if (event.matches) closeNav();
+    });
+  }
+
   /* ---- Ink entry / page-wipe transitions ---- */
   const curtain = document.getElementById('inkCurtain');
   if (curtain) {
@@ -167,6 +197,7 @@
     let isDown = false, startX = 0, startScroll = 0, dragged = false;
 
     track.addEventListener('pointerdown', (e) => {
+      if (e.pointerType === 'touch' || e.button !== 0 || e.target.closest('a')) return;
       isDown = true; dragged = false;
       startX = e.clientX; startScroll = track.scrollLeft;
       track.classList.add('is-dragging');
@@ -192,6 +223,9 @@
       const stop = () => { drifting = false; };
       track.addEventListener('pointerdown', stop, { once: true });
       track.addEventListener('wheel', stop, { once: true });
+      track.addEventListener('focusin', stop, { once: true });
+      track.addEventListener('keydown', stop, { once: true });
+      track.addEventListener('touchstart', stop, { once: true, passive: true });
       const drift = () => {
         if (drifting && !isDown) {
           track.scrollLeft += 0.35;
@@ -223,6 +257,7 @@
       btn.addEventListener('click', () => {
         filters.forEach((b) => b.classList.remove('is-active'));
         btn.classList.add('is-active');
+        filters.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
         const f = btn.dataset.filter;
         arts.forEach((a) => {
           const show = f === 'all' || (a.dataset.cat || '').split(' ').includes(f);
@@ -245,6 +280,7 @@
     const btnNext = document.getElementById('lbNext');
 
     let currentIdx = -1;
+    let previousFocus = null;
 
     const visibleArts = () => arts.filter((a) => !a.classList.contains('is-hidden'));
 
@@ -252,6 +288,7 @@
       const list = visibleArts();
       currentIdx = list.indexOf(art);
       if (currentIdx === -1) return;
+      previousFocus = document.activeElement;
       render(list[currentIdx]);
       lightbox.classList.add('is-open');
       lightbox.setAttribute('aria-hidden', 'false');
@@ -282,6 +319,8 @@
       lightbox.classList.remove('is-open');
       lightbox.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
+      if (previousFocus && previousFocus.isConnected && typeof previousFocus.focus === 'function') previousFocus.focus();
+      previousFocus = null;
     };
 
     arts.forEach((art) => {
@@ -300,7 +339,14 @@
 
     document.addEventListener('keydown', (e) => {
       if (!lightbox.classList.contains('is-open')) return;
-      if (e.key === 'Escape') close();
+      if (e.key === 'Escape') { e.preventDefault(); close(); }
+      if (e.key === 'Tab') {
+        const focusable = Array.from(lightbox.querySelectorAll('button, a[href], [tabindex]:not([tabindex="-1"])')).filter(el => !el.disabled && el.getClientRects().length);
+        if (!focusable.length) { e.preventDefault(); return; }
+        const first = focusable[0], last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
       if (e.key === 'ArrowLeft') step(-1);
       if (e.key === 'ArrowRight') step(1);
     });
