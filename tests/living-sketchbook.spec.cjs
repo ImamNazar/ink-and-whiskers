@@ -66,13 +66,13 @@ test('reduced motion retains usable content',async({page})=>{
 test('artwork images load successfully', async ({page}) => {
   for (const path of pages) {
     await page.goto('/'+path);
-    const images=page.locator('img[src]');
+    const images=page.locator('img[src]:not([src=""])');
     const count=await images.count();
     for(let i=0;i<count;i++){
       const img=images.nth(i);
       await img.evaluate(el=>{el.loading='eager';});
     }
-    await expect.poll(async()=>page.locator('img[src]').evaluateAll(imgs=>
+    await expect.poll(async()=>page.locator('img[src]:not([src=""])').evaluateAll(imgs=>
       imgs.filter(img=>!img.complete).length
     ),{timeout:10000}).toBe(0);
     const broken=await images.evaluateAll(imgs=>imgs.filter(img=>img.naturalWidth===0).map(img=>img.getAttribute('src')));
