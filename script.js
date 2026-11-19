@@ -197,6 +197,7 @@
     let isDown = false, startX = 0, startScroll = 0, dragged = false;
 
     track.addEventListener('pointerdown', (e) => {
+      if (e.pointerType === 'touch' || e.button !== 0 || e.target.closest('a')) return;
       isDown = true; dragged = false;
       startX = e.clientX; startScroll = track.scrollLeft;
       track.classList.add('is-dragging');
@@ -222,6 +223,9 @@
       const stop = () => { drifting = false; };
       track.addEventListener('pointerdown', stop, { once: true });
       track.addEventListener('wheel', stop, { once: true });
+      track.addEventListener('focusin', stop, { once: true });
+      track.addEventListener('keydown', stop, { once: true });
+      track.addEventListener('touchstart', stop, { once: true, passive: true });
       const drift = () => {
         if (drifting && !isDown) {
           track.scrollLeft += 0.35;
