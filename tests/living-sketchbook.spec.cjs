@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const pages = ['index.html','gallery.html','artist.html','play.html'];
 for (const path of pages) {
-  for (const width of [375,768,1280]) {
+  for (const width of [320,375,430,768,1024,1280]) {
     test(path + ' responsive ' + width, async ({ page }) => {
       await page.setViewportSize({width,height:850});
       const errors=[];page.on('pageerror',e=>errors.push(e.message));
@@ -61,4 +61,27 @@ test('reduced motion retains usable content',async({page})=>{
   await page.goto('/index.html');
   await expect(page.locator('#artistsDesk')).toBeVisible();
   await expect(page.locator('.easel-card').first()).toBeVisible();
+});
+
+test('artwork images load successfully', async ({page}) => {
+  for (const path of pages) {
+    await page.goto('/'+path);
+    const failures=await page.locator('img').evaluateAll(images => images.filter(img=>!img.loading || img.loading!=='lazy').map(img=>img.src));
+    await page.evaluate(async()=>{
+      await Promise.all([...document.images].map(img=>img.decode().catch(()=>null)));
+    });
+    const broken=await page.locator('img').evaluateAll(images=>images.filter(img=>!img.complete || img.naturalWidth===0).map(img=>img.getAttribute('src')));
+    expect(broken, path+' broken images').toEqual([]);
+  }
+});
+test('touch navigation works on narrow phones',async({browser})=>{
+  const context=await browser.newContext({viewport:{width:320,height:700},hasTouch:true,isMobile:true});
+  const page=await context.newPage();
+  await page.goto('/index.html');
+  const toggle=page.locator('.nav-toggle');
+  await toggle.tap();
+  await expect(toggle).toHaveAttribute('aria-expanded','true');
+  await page.locator('#primaryNav a[href="gallery.html"]').tap();
+  await expect(page).toHaveURL(/gallery.html$/);
+  await context.close();
 });
